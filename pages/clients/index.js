@@ -10,9 +10,22 @@ function ClientsIndex() {
     <div>
       <h1>Default landing page for Clients</h1>
       <ul>
-        {clients.map((client) => ( 
+        {/* OPTION #1 - Map with string urls */}
+        {clients.map((client) => (
           <li key={client.id}>
-            <Link href={`/clients/${client.id}`}>{client.name}</Link> 
+            <Link href={`/clients/${client.id}`}>{client.name}</Link>
+          </li>
+        ))}
+      </ul>
+
+      <ul>
+        {/* OPTION #2 - Map with objects */}
+        {clients.map((client) => (
+          <li key={client.id}>
+            <Link href={{
+              pathname: '/clients/[id]',
+              query: {id: client.id},
+            }}>{client.name}</Link>
           </li>
         ))}
       </ul>
